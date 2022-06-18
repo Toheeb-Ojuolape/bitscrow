@@ -3,7 +3,7 @@
     
     <v-main class="mb-12">
       <v-row class="noSide" no-gutters>
-           <v-col class="text-center">
+           <v-col class="hidden-md-and-down text-center">
             <v-sheet color="#000040" style="padding:90px 0px" height=125%>
           <v-img width="563px" height="463px" style="margin:auto" src="../assets/bitcoinlogin.png" />
          </v-sheet>
@@ -81,7 +81,7 @@
               style="font-size:14px;margin-bottom:0px;padding-bottom:0px"
               to="/login"
             >
-              Don't have an account? <router-link style="text-decoration:none;color:#FF7B00" to="/signup">Create Account</router-link>
+              Don't have an account?
             </p>
             <v-btn outlined large to="/signup" style="border-radius:12px;margin-top:10px" block color="#FF7B00">
              Create Account

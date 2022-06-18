@@ -2,7 +2,7 @@
   <v-app>
     <v-main style="margin-top: 2px">
       <v-row no-gutters class="noSide">
-        <v-col class="text-left">
+        <v-col class="hidden-md-and-down text-left">
             <v-sheet height=110% style="padding:99px 0px" color="black">
           <div>
           <v-img
@@ -24,7 +24,7 @@
               color: black;
               border:solid 1px black;
               border-radius:15px;
-              width:47%;
+              width:50%;
               padding:10px
 
             "
@@ -220,6 +220,12 @@ export default {
 @media screen and (min-width:1023px){
     .laptopWidth{
         margin:50px !important
+    }
+}
+
+@media screen and (max-width:800px){
+    .laptopWidth{
+        margin:90px 10px!important
     }
 }
 .or {
