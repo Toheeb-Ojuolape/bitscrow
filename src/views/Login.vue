@@ -161,55 +161,14 @@ export default {
       else{
         axios({
         method: "POST", 
-        url: "https://greeneratech.herokuapp.com/api/authenticate/signin",
+        url: "https://app.lightningescrow.io/login/v2/",
         data: {
           email: this.email,
           password: this.password,
         },
       }).then((response)=>{
         console.log(response)
-        if(response.data.error.length==0){
-        //    this.$swal({
-        //   title: "Registration Successful!",
-        //   text: response.data.data.message,
-        //   icon: "success",
-        //   confirmButtonText: "Ok",
-        // });
-          this.loading = false
-          console.log(response.data.data.isBusiness)
-         if(response.data.user.isBusiness==true){
-          this.$router.push("/business/dashboard")
-          }
-          else{
-          this.$router.push("/dashboard")
-          }
-          console.log(response.data)
-          this.$store.dispatch("fetchUser",response.data.user)
-          localStorage.setItem('token',response.data.token)
-        }
-
-
-        else if(response.data.error.length == 0 || response.data.error.email != []){
-           this.$swal({
-          title: "Error",
-          text: response.data.error.email ?? response.data.error[0],
-          icon: "error",
-          confirmButtonText: "Ok",
-        });
-
-          this.loading = false
-        }
-      
-      
-      }).catch((error)=>{
-        console.log(error)
-          this.$swal({
-          title: "Error",
-          text: "The login details you entered is invalid",
-          icon: "error",
-          confirmButtonText: "Ok",
-        });
-        this.loading = false
+        this.$router.push("/dashboard")
       })
       }
     }

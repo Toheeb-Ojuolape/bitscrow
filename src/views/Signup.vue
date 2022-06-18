@@ -20,12 +20,12 @@
                  <p
             style="
               font-weight: 500;
-              font-size: 18px;
+              font-size: 14px;
               color: black;
               border:solid 1px black;
               border-radius:15px;
-              width:62%;
-              padding:12px
+              width:47%;
+              padding:10px
 
             "
           >
