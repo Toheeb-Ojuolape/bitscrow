@@ -108,6 +108,7 @@ export default{
                     icon:"success"
                 })
             }).catch(()=>{
+                this.loading = false
                   this.$swal({
                     title: "Invoice not sent",
                     text: "Invite was not sent to client. Your client has not been notified",
