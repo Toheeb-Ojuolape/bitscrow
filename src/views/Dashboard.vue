@@ -16,7 +16,7 @@
                     <p>{{transaction.description}}</p>
                 </v-card-text>
                 <v-card-actions>
-                    <v-btn color="primary" @click="sendInvoice(transaction.invoice,transaction.id)">Send Invoice</v-btn>
+                    <v-btn :loading="loading" color="primary" @click="sendInvoice(transaction.invoice,transaction.id)">Send Invoice</v-btn>
                     <v-btn color="error" outlined @click="emailClient(transaction.buyer_email)">Message client</v-btn>
                 </v-card-actions>
             </v-card>
@@ -81,13 +81,13 @@ export default{
             })
         },
         sendInvoice(invoice,id){
+            this.loading = true
             const payload = {
                    session_id: localStorage.getItem("sessionID"),
                    invoice: "ln"+invoice,
                    tx:id
             }
             console.log(payload)
-            this.loading = true
             axios({
                 method:"POST",
                 url:"https://app.lightningescrow.io/setinvoice/v2/",
@@ -102,10 +102,18 @@ export default{
                 console.log(res)
                     this.$swal({
                     title: "Invoice sent successfully",
-                    text: "Invite sent successfully to client. Youe client has been notified and will make payment shortly",
+                    text: "Invite sent successfully to client. Your client has been notified and will make payment shortly",
                     type: "success",
                     confirmButtonText: "OK",
                     icon:"success"
+                })
+            }).catch(()=>{
+                  this.$swal({
+                    title: "Invoice not sent",
+                    text: "Invite was not sent to client. Your client has not been notified",
+                    type: "success",
+                    confirmButtonText: "OK",
+                    icon:"error"
                 })
             })
         },
@@ -146,7 +154,7 @@ export default{
                 this.loading = false
                     this.$swal({
                     title: "Contract sent",
-                    text: "Contract sent successfully. Youe client has been notified and will make payment shortly",
+                    text: "Contract sent successfully. Your client has been notified and will make payment shortly",
                     type: "success",
                     confirmButtonText: "OK",
                     icon:"success"
