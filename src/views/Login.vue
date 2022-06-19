@@ -168,6 +168,7 @@ export default {
         },
       }).then((response)=>{
         console.log(response)
+        localStorage.setItem("sessionID", response.data.session)
         this.$router.push("/dashboard")
       })
       }

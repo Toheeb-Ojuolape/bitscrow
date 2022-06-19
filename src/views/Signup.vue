@@ -207,7 +207,8 @@ export default {
       }).then((response)=>{
           console.log(response)
           this.loading = false
-          this.$router.push("/dashboard")
+          localStorage.setItem(response.data.session)
+          // this.$router.push("/dashboard")
       })
       }
       
